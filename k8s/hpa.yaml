@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: goserver-hpa
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  targetCPUUtilizationPercentage: 30
+  scaleTargetRef:
+    apiVersion: apps/v1
+    name: goserver
+    kind: Deployment
